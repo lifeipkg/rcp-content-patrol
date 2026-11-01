@@ -1,0 +1,15 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    # 共享流水线在契约仓维护：编译、测试、契约→实现对表
+    uses: lifeipkg/rcp-contracts/.github/workflows/java-service.yml@main
+    with:
+      service: content-patrol
+      contract: contracts/openapi/content-patrol.yaml
+      core-ref: v1.0.0
